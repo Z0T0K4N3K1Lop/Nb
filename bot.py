@@ -3,83 +3,81 @@
 import LINETCR
 from LINETCR.lib.curve.ttypes import *
 from datetime import datetime
-import time,random,sys,json,codecs,threading,glob,re,datetime,subprocess,urllib3,os,requests,urllib,goslate,pyowm
-from bs4 import BeautifulSoup
-from threading import Thread
-from pyowm import OWM
+import time,random,sys,json,codecs,threading,glob,re
 
 cl = LINETCR.LINE()
-cl.login(token="EmBDgrBFhXJpY7dQzZu8.bfmfUwtccO+1N7EuVwD+Ma.oabpihLvt98qEpaxEnGT4qSW74hTzicNwJckxwLcpE8=")
+cl.login(token="Enx3b3R1eF4vJXzdgUH4.7UpnrSpbBLku34NMQquZja.x4YxKzrZJTYGjSGdwvJsXXLrlEMf7dinJfx3jLjKDx0=")
 cl.loginResult()
 
 kk = LINETCR.LINE()
-kk.login(token="Em6CHjpD7QHn365mI8W3.b151yOadpUwvZ3Q/9r80aW.Y+WFbQfwESXytbkaiuiplEfgEDDPDJsUjPZN05o3m7E=")
+kk.login(token="EnCTNh4MU3Y9lUCy39rf.VhUBCNkLBNBEY+aAw6H0ZW.LpKAP5EFi4Tk46FilKnathQMY6QMsDHd+fIyAMEjVuQ=")
 kk.loginResult()
 
 ki = LINETCR.LINE()
-ki.login(token="Em8WPZacfeoF9ioyZCHd.UvZQ8iaX1kDhGbAShThZ3q.1EiTKut1Z/eHFNGn899abavIZp5/zxPm6L7+A82m/Q0=")
+ki.login(token="EnEAedLdibLoONaMGnK6.Zg2BQYNPKl2ksz44ZIytHG.DN8ar+4Il2MgVoaQ2Z53eFn3uUIEhk3iiPEpbwWPfBk=")
 ki.loginResult()
 
 kc = LINETCR.LINE()
-kc.login(token="Em1nLzLCVz0cQlC9Pt7b.VHH0q0Dhr8pSns5/+RsmgW.Dnfdg/UrkMwX9f8syDlWvDsktEIBNGA0j9YbZzitloU=")
+kc.login(token="EnutRFKDWhrhTfkmXbo6.lEc1JaEVsI3l5xpWt5mAnG.x3HmElMPxHJz4X7H3hYa8KqEoaiNFIeDfFdRAGtP91Q=")
 kc.loginResult()
 
 print "Login success"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-helpMessage =""" 􀜁􀅹Salute􏿿 | Keyboard Member | 􀜁􀅹Salute􏿿
+helpMessage =""" ===[COMMAND FOR PUBLIC]===
 
-[􀜁􀅹Salute􏿿] Hi  (yah begitulah)
-[􀜁􀅹Salute􏿿] Creator ( Creator / Admin )
-[􀜁􀅹Salute􏿿] Me ( Info Contact )
-[􀜁􀅹Salute􏿿] Gift ( Gift Thema )
-[􀜁􀅹Salute􏿿] Ginfo ( Group info )
-[􀜁􀅹Salute􏿿] Welcome ( yah begitulah )
-[􀜁􀅹Salute􏿿] Cancel ( Cancel member pending )
-[􀜁􀅹Salute􏿿] Tagall ( Tagall member group )
-[􀜁􀅹Salute􏿿] pp @tag ( PP yang di tag )
-[􀜁􀅹Salute􏿿] cover @tag ( Cover yang di tag )
-[􀜁􀅹Salute􏿿] Kedapkedip ( Teks kekinian 􀜁􀅔Har Har􏿿 , Contoh : Kedapkedip  )
-[􀜁􀅹Salute􏿿] /apakah ( Kerang ajaib )
-[􀜁􀅹Salute􏿿] /translate-en ( Translate Indo - EN , Contoh : /translate-en Grup ) 
-[􀜁􀅹Salute􏿿] /set ( Set point )
-[􀜁􀅹Salute􏿿] /check ( Check sider )
-[􀜁􀅹Salute􏿿] /lagu ( Cari lagu , Contoh : /lagu iwan fals ibu )
-[􀜁􀅹Salute􏿿] /lirik ( Cari Lirik , Contoh : /lirik Payung teduh Akad )
-[􀜁􀅹Salute􏿿] /ig ( Cek profile Instagram , Contoh : /ig instagram )
-[􀜁􀅹Salute􏿿] /youtube ( Scrap link youtube , Contoh : /youtube young dumb & broke )
+۩ Hi  (yah begitulah)
+۩ Creator ( Creator / Admin )
+۩ Me ( Info Contact 
+۩ Gift ( Gift Thema )
+۩ Ginfo ( Group info )
+۩ Welcome ( yah begitulah )
+۩ Cancel ( Cancel member pending )
+۩ Tagall ( Tagall member group )
+۩ pp @tag ( PP yang di tag )
+۩ cover @tag ( Cover yang di tag )
+۩ Kedapkedip ( Teks kekinian 􀜁􀅔Har Har􏿿 , Contoh : Kedapkedip  )
+۩ /apakah ( Kerang ajaib )
+۩ /translate-en ( Translate Indo - EN , Contoh : /translate-en Grup ) 
+۩ /set ( Set point )
+۩ /check ( Check sider )
+۩ /lagu ( Cari lagu , Contoh : /lagu iwan fals ibu )
+۩ /lirik ( Cari Lirik , Contoh : /lirik Payung teduh Akad )
+۩ /ig ( Cek profile Instagram , Contoh : /ig instagram )
+ /youtube ( Scrap link youtube , Contoh : /youtube young dumb & broke )
 
-􀜁􀅹Salute􏿿 | Keyboard (Admin) | 􀜁􀅹Salute􏿿
+====[COMMAND FOR ADMIN]====
 
-[􀜁􀅹Salute􏿿] bye # Mengusir Bot (Di Aktifin Admin)
-[􀜁􀅹Salute􏿿] /unban > Tidak Di Banned
-[􀜁􀅹Salute􏿿] /ban > Target Di Banned
-[􀜁􀅹Salute􏿿] join > Membawa Pasukan (4 Bot)
-[􀜁􀅹Salute􏿿] ourl > Open Link Grup *Tanpa Staaff/Admin
-[􀜁􀅹Salute􏿿] curl > Menutup Link Grup *Tanpa Staff/Admin
-[􀜁􀅹Salute􏿿] /spam (Jumlah) (Kata) > Menyempam Kata
+♛ bye # Mengusir Bot (Di Aktifin Admin)
+♛ /unban > Tidak Di Banned
+♛ /ban > Target Di Banned
+♛ join > Membawa Pasukan (4 Bot)
+♛ ourl > Open Link Grup 
+♛ curl > Menutup Link Grup 
+♛ /spam (Jumlah) (Kata) > Menyempam Kata
+♛ /nk @tag -> Mengkick Target
+♛ /bcgc -> Untuk Broadcast Group
+♛ /bc -> Untuk Broadcast Melalui Pc
+♛ /grup id -> Mengentahui Grup List
+♛ /bio -> Mengedit Bio
+♛ /gn -> Mengganti Nama Grup
+♛ /cn -> Mengganti Nama Bot 1,2,3,4
+♛ /removechat -> remove chat
+♛ kill -> kick yang ban
+♛ contact on/off
+♛ join on/off
+♛ Gcancel on/off
+♛ leave on/off
+♛ protect on/off
+♛ qr on/off
+♛ invite on/off
+♛ cancel on/off
 
-[􀜁􀅹Salute􏿿] /nk @tag -> Mengkick Target
-[􀜁􀅹Salute􏿿] /bcgc -> Untuk Broadcast Group
-[􀜁􀅹Salute􏿿] /bc -> Untuk Broadcast Melalui Pc
-[􀜁􀅹Salute􏿿] /grup id -> Mengentahui Grup List
-[􀜁􀅹Salute􏿿] /bio -> Mengedit Bio
-[􀜁􀅹Salute􏿿] /gn -> Mengganti Nama Grup
-[􀜁􀅹Salute􏿿] /cn -> Mengganti Nama Bot 1,2,3,4
-[􀜁􀅹Salute􏿿] /removechat -> remove chat
-[􀜁􀅹Salute􏿿] kill -> kick yang ban
-
-[􀜁􀅹Salute􏿿] contact on/off
-[􀜁􀅹Salute􏿿] join on/off
-[􀜁􀅹Salute􏿿] Gcancel on/off
-[􀜁􀅹Salute􏿿] leave on/off
-[􀜁􀅹Salute􏿿] protect on/off
-[􀜁􀅹Salute􏿿] qr on/off
-[􀜁􀅹Salute􏿿] invite on/off
-[􀜁􀅹Salute􏿿] cancel on/off
-
-[􀜁􀅹Salute􏿿] Mulai -> Meratakan  [􀜁􀅹Salute􏿿]"""
+=======================
+CREATOR TEAM KANEKI BOT
+=======================
+"""
 
 KAC=[cl,ki,kk,kc]
 dmid = cl.getProfile().mid
@@ -87,9 +85,9 @@ Amid = ki.getProfile().mid
 Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
 Bots = [dmid,Amid,Bmid,Cmid]
-admin = ["ube187443474747c3ec352e7efeb48c1b","ub95ceaf08031d4a7478016ac1ed1f3dd","ud18caee2faa4cf85c1dbfc37589ce7d1"]
-staff = ["ube187443474747c3ec352e7efeb48c1b","ub95ceaf08031d4a7478016ac1ed1f3dd","ub95ceaf08031d4a7478016ac1ed1f3dd"]
-adminMID = "ube187443474747c3ec352e7efeb48c1b","ub95ceaf08031d4a7478016ac1ed1f3dd"
+admin = ["uc77fd25b59f6e563d84f1334f3fed10b"]
+staff = ["uc77fd25b59f6e563d84f1334f3fed10b"]
+adminMID = "uc77fd25b59f6e563d84f1334f3fed10b"
 wait = {
     'contact':True,
     'autoJoin':True,
@@ -492,7 +490,7 @@ def bot(op):
             msg = op.message
             if msg.toType == 0:
                 msg.to = msg.from_
-                if msg.from_ == "ub95ceaf08031da4a7478016ac1ed1f3dd":
+                if msg.from_ == "uc77fd25b59f6e563d84f1334f3fed10b":
                     if "join:" in msg.text:
                         list_ = msg.text.split(":")
                         try:
@@ -615,10 +613,10 @@ def bot(op):
 #------------------------------- CREATOR ------------------------------------
             elif msg.text.lower() in ["creator","admin"]:
                 msg.contentType = 13
-                adm = 'ube187443474747c3ec352e7efeb48c1b'
+                adm = 'uc77fd25b59f6e563d84f1334f3fed10b'
                 msg.contentMetadata = {'mid': adm}
                 cl.sendMessage(msg)
-                cl.sendText(msg.to,"Instagram : @dekaprabowoo\nNama : Aked\nZodiak : Taurus")
+                cl.sendText(msg.to,"MY CREATOR TEAM KANEKI BOT")
 #----------------------------------------------------------------------------
 #--------------------------------- GIFT -------------------------------------
             elif msg.text.lower() in ["gift"]:
@@ -712,9 +710,9 @@ def bot(op):
                             u = "close"
                         else:
                             u = "open"
-                        cl.sendText(msg.to,"􀜁􀅹Salute􏿿 Grup Name 􀜁􀅹Salute􏿿 :\n" + str(ginfo.name) + "\n「 Grup ID 」 :\n" + msg.to + "\n􀜁􀅹Salute􏿿 Grup Creator 􀜁􀅹Salute􏿿 :\n" + gCreator + "\n「 Grup Status 」 :\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus + "\n\nTotal Anggota : " + str(len(ginfo.members)) + " Orang\nPending : " + sinvitee + " Orang")#URL : " + u + "it is inside")
+                        cl.sendText(msg.to," Grup Name :\n" + str(ginfo.name) + "\n「 Grup ID 」 :\n" + msg.to + "\n Grup Creator  :\n" + gCreator + "\n「 Grup Status 」 :\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus + "\n\nTotal Anggota : " + str(len(ginfo.members)) + " Orang\nPending : " + sinvitee + " Orang")#URL : " + u + "it is inside")
                     else:
-                        cl.sendText(msg.to,"􀜁􀅹Salute􏿿 Grup Name 􀜁􀅹Salute􏿿 :\n" + str(ginfo.name) + "\n「 Grup ID 」 :\n" + msg.to + "\n􀜁􀅹Salute􏿿 Grup Creator 􀜁􀅹Salute􏿿 :\n" + gCreator + "\n「 Grup Status 」 :\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus)
+                        cl.sendText(msg.to," Grup Name :\n" + str(ginfo.name) + "\n「 Grup ID 」 :\n" + msg.to + "\n Grup Creator  :\n" + gCreator + "\n「 Grup Status 」 :\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus)
                 else:
                     if wait["lang"] == "JP":
                         cl.sendText(msg.to,"Grup Only Boy")
@@ -1495,10 +1493,10 @@ def bot(op):
 #----------------------------------------------------------------------------
 #--------------------------------- ABSEN ------------------------------------
             elif msg.text.lower() in ["absen"]:
-                cl.sendText(msg.to,"Hadir Bosku ????Salute??")
-                ki.sendText(msg.to,"Hadir  ????Salute??")
-                kk.sendText(msg.to,"Selalu Hadir ????Salute??")
-                kc.sendText(msg.to,"Come Back ????Salute??")
+                cl.sendText(msg.to,"KANEKI BOT 1 HERE!!")
+                ki.sendText(msg.to,"KANEKI BOT 2 HERE!!")
+                kk.sendText(msg.to,"KANEKI BOT 3 HERE!!")
+                kc.sendText(msg.to,"KANEKI BOT 4 HERE!!")
 #----------------------------------------------------------------------------
 #------------------------------ RESPON SPEED --------------------------------
             elif msg.text.lower() in ["respon"]:
