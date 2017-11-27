@@ -299,13 +299,13 @@ def bot(op):
                     if op.param2 in Bots:
                         pass
                     try:
-                        kk.kickoutFromGroup(op.param1,[op.param2])
-                        kc.kickoutFromGroup(op.param1,[op.param2])
-                        kk.inviteIntoGroup(op.param1,[op.param1,[op.param3])
-                        kc.inviteIntoGroup(op.param1,[op.param1,[op.param3])
+                        kk.kickoutFromGroup(op.param1,[op.param2]
+                        kc.kickoutFromGroup(op.param1,[op.param2]
+                        kk.inviteIntoGroup(op.param1,[op.param1,[op.param3]
+                        kc.inviteIntoGroup(op.param1,[op.param1,[op.param3]
                     except:
                         try:
-                            random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                            random.choice(KAC).kickoutFromGroup(op.param1,[op.param2]
                         except:
                             print ("clientが蹴り規制orグループに存在しない為、\n["+op.param1+"]\nの\n["+op.param2+"]\nを蹴る事ができませんでした。\nブラックリストに追加します。")
                         if op.param2 in wait["blacklist"]:
