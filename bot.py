@@ -3,76 +3,82 @@
 import LINETCR
 from LINETCR.lib.curve.ttypes import *
 from datetime import datetime
-import time,random,sys,json,codecs,threading,glob,re
+import time,random,sys,json,codecs,threading,glob,re,urllib
 
 cl = LINETCR.LINE()
-cl.login(token="Enx3b3R1eF4vJXzdgUH4.7UpnrSpbBLku34NMQquZja.x4YxKzrZJTYGjSGdwvJsXXLrlEMf7dinJfx3jLjKDx0=")
+cl.login(qr=True)
 cl.loginResult()
 
-kk = LINETCR.LINE()
-kk.login(token="EnCTNh4MU3Y9lUCy39rf.VhUBCNkLBNBEY+aAw6H0ZW.LpKAP5EFi4Tk46FilKnathQMY6QMsDHd+fIyAMEjVuQ=")
-kk.loginResult()
+#kk = LINETCR.LINE()
+#kk.login(qr=True)
+#kk.loginResult()
 
-ki = LINETCR.LINE()
-ki.login(token="EnEAedLdibLoONaMGnK6.Zg2BQYNPKl2ksz44ZIytHG.DN8ar+4Il2MgVoaQ2Z53eFn3uUIEhk3iiPEpbwWPfBk=")
-ki.loginResult()
+#ki = LINETCR.LINE()
+#ki.login(token="EnEAedLdibLoONaMGnK6.Zg2BQYNPKl2ksz44ZIytHG.DN8ar+4Il2MgVoaQ2Z53eFn3uUIEhk3iiPEpbwWPfBk=")
+#ki.loginResult()
 
-kc = LINETCR.LINE()
-kc.login(token="EnutRFKDWhrhTfkmXbo6.lEc1JaEVsI3l5xpWt5mAnG.x3HmElMPxHJz4X7H3hYa8KqEoaiNFIeDfFdRAGtP91Q=")
-kc.loginResult()
+#kc = LINETCR.LINE()
+#kc.login(token="EnutRFKDWhrhTfkmXbo6.lEc1JaEVsI3l5xpWt5mAnG.x3HmElMPxHJz4X7H3hYa8KqEoaiNFIeDfFdRAGtP91Q=")
+#kc.loginResult()
 
 print "Login success"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-helpMessage =""" ===[COMMAND FOR PUBLIC]===
+helpMessage =""" 
 
-۩ Hi  (yah begitulah)
-۩ Creator ( Creator / Admin )
-۩ Me ( Info Contact 
-۩ Gift ( Gift Thema )
-۩ Ginfo ( Group info )
-۩ Welcome ( yah begitulah )
-۩ Cancel ( Cancel member pending )
-۩ Tagall ( Tagall member group )
-۩ pp @tag ( PP yang di tag )
-۩ cover @tag ( Cover yang di tag )
-۩ Kedapkedip ( Teks kekinian 􀜁􀅔Har Har􏿿 , Contoh : Kedapkedip  )
-۩ /apakah ( Kerang ajaib )
-۩ /translate-en ( Translate Indo - EN , Contoh : /translate-en Grup ) 
-۩ /set ( Set point )
-۩ /check ( Check sider )
-۩ /lagu ( Cari lagu , Contoh : /lagu iwan fals ibu )
-۩ /lirik ( Cari Lirik , Contoh : /lirik Payung teduh Akad )
-۩ /ig ( Cek profile Instagram , Contoh : /ig instagram )
- /youtube ( Scrap link youtube , Contoh : /youtube young dumb & broke )
+=======================
+PERINTAH UNTUK PUBLIC
+=======================
 
-====[COMMAND FOR ADMIN]====
+==> Hi  (yah begitulah)
+==> Creator ( Creator / Admin )
+==> Me ( Info Contact 
+==> Gift ( Gift Thema )
+==> Ginfo ( Group info )
+==> Welcome ( yah begitulah )
+==> Cancel ( Cancel member pending )
+==> Tagall ( Tagall member group )
+==> pp @tag ( PP yang di tag )
+==> cover @tag ( Cover yang di tag )
+==> Kedapkedip ( Teks kekinian 􀜁􀅔Har Har􏿿 , Contoh : Kedapkedip  )
+==> /apakah ( Kerang ajaib )
+==> /translate-en ( Translate Indo - EN , Contoh : /translate-en Grup ) 
+==> /set ( Set point )
+==> /check ( Check sider )
+==> /lagu ( Cari lagu , Contoh : /lagu iwan fals ibu )
+==> /lirik ( Cari Lirik , Contoh : /lirik Payung teduh Akad )
+==> /ig ( Cek profile Instagram , Contoh : /ig instagram )
+==> /youtube ( Scrap link youtube , Contoh : /youtube young dumb & broke )
 
-♛ bye # Mengusir Bot (Di Aktifin Admin)
-♛ /unban > Tidak Di Banned
-♛ /ban > Target Di Banned
-♛ join > Membawa Pasukan (4 Bot)
-♛ ourl > Open Link Grup 
-♛ curl > Menutup Link Grup 
-♛ /spam (Jumlah) (Kata) > Menyempam Kata
-♛ /nk @tag -> Mengkick Target
-♛ /bcgc -> Untuk Broadcast Group
-♛ /bc -> Untuk Broadcast Melalui Pc
-♛ /grup id -> Mengentahui Grup List
-♛ /bio -> Mengedit Bio
-♛ /gn -> Mengganti Nama Grup
-♛ /cn -> Mengganti Nama Bot 1,2,3,4
-♛ /removechat -> remove chat
-♛ kill -> kick yang ban
-♛ contact on/off
-♛ join on/off
-♛ Gcancel on/off
-♛ leave on/off
-♛ protect on/off
-♛ qr on/off
-♛ invite on/off
-♛ cancel on/off
+========================
+PERINTAH UNTUK ADMIN
+========================
+
+==> bye # Mengusir Bot (Di Aktifin Admin)
+==> /unban > Tidak Di Banned
+==> /ban > Target Di Banned
+==> join > Membawa Pasukan (4 Bot)
+==> ourl > Open Link Grup 
+==> curl > Menutup Link Grup 
+==> /spam (Jumlah) (Kata) > Menyempam Kata
+==> /nk @tag -> Mengkick Target
+==> /bcgc -> Untuk Broadcast Group
+==> /bc -> Untuk Broadcast Melalui Pc
+==> /grup id -> Mengentahui Grup List
+==> /bio -> Mengedit Bio
+==> /gn -> Mengganti Nama Grup
+==> /cn -> Mengganti Nama Bot 1,2,3,4
+==> /removechat -> remove chat
+==> kill -> kick yang ban
+==> contact on/off
+==> join on/off
+==> Gcancel on/off
+==> leave on/off
+==> protect on/off
+==> qr on/off
+==> invite on/off
+==> cancel on/off
 
 =======================
 CREATOR TEAM KANEKI BOT
